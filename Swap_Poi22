@@ -1,0 +1,21 @@
+//Swap two numbers using pointers
+
+#include <stdio.h>
+#include <conio.h>
+void swap(int *x,int *y)
+{
+ int temp;
+ temp=*x;
+ *x=*y;
+ *y=temp;
+ printf("Numbers after swapping are %d and %d\n",*x,*y);
+}
+void main()
+{
+ int x,y;
+ clrscr();
+ printf("Enter the numbers\n");
+ scanf("%d%d",&x,&y);
+ swap(&x,&y);
+ getch();
+}
