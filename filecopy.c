@@ -1,3 +1,5 @@
+// Programto copy two files
+
 #include <stdio.h>
 //#include <conio.h>
 

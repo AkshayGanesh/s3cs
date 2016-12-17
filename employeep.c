@@ -1,3 +1,5 @@
+// Program to manage an employee list using pointers
+
 #include <stdio.h>
 #include <stdlib.h>
 //#include <conio.h>

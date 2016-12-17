@@ -1,4 +1,4 @@
-// Sum of n primes
+// Program to find sum of n primes
 
 #include <stdio.h>
 //#include <conio.h>
