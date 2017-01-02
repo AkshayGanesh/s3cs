@@ -19,7 +19,7 @@ printf("%c",str[i]);printf("\n");
 
 printf("Enter the second string for concatenation: ");
 gets(str1);
-for(i=c;str1[k++]!='\0';i++)
+for(i=c;str1[++k]!='\0';i++)
 str[i]=str1[k];
 printf("The concatenated string is %s",str);
 getch();
