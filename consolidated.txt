@@ -1,0 +1,355 @@
+// Program to accept the marklist of a student using structure
+
+#include <stdio.h>
+//#include <conio.h>
+
+struct mlist {
+  char name[20];
+  int rollno;
+  float m1, m2, m3;
+  float total;
+  float avg;
+} entry;
+
+
+int main(void) {
+  //clrscr();
+
+  printf("Enter the name: ");
+  scanf("%s", entry.name);
+
+  printf("Enter the roll no. : ");
+  scanf("%d", &(entry.rollno));
+
+  printf("Enter the marks of the students: ");
+  scanf("%f%f%f", &(entry.m1), &(entry.m2), &(entry.m3));
+
+  entry.total = entry.m1 + entry.m2 + entry.m3;
+  entry.avg = entry.total / 3.0;
+
+  printf("\n\nName: %s\nRoll No.: %d\nMark 1: %f\nMark 2: %f\nMark 3: %f\nTotal: %f\nAverage: %f\n", entry.name, entry.rollno, entry.m1, entry.m2, entry.m3, entry.total, entry.avg);
+
+  //getch();
+  return 0;
+}
+
+
+Output:
+Enter the name: Alex
+Enter the roll no. : 8
+Enter the marks of the students: 70 75 80
+
+
+Name: Alex
+Roll No.: 8
+Mark 1: 70.000000
+Mark 2: 75.000000
+Mark 3: 80.000000
+Total: 225.000000
+Average: 75.000000
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+// Program to manage an employee list using pointers
+
+#include <stdio.h>
+#include <stdlib.h>
+//#include <conio.h>
+
+
+struct employee {
+  int id;
+  char name[25];
+  char job[25];
+  int age;
+};
+
+
+int main(void) {
+  struct employee *list, *t;
+  int i, n, id = 0;
+
+  //clrscr();
+
+  printf("Enter the number of employees :");
+  scanf("%d", &n);
+  printf("\n");
+
+  list = (struct employee*) malloc(sizeof(struct employee) * n);
+  if(list == NULL) {
+    printf("There was an error initialising\n");
+    //getch();
+    return 1;
+  }
+
+  t = list;
+
+  for(i=0;i<n;i++) {
+    printf("Enter the name: ");
+    scanf("%s", list->name);
+
+    printf("Enter the ID: ");
+    scanf("%d", &(list->id));
+
+    printf("Enter the designation: ");
+    scanf("%s", list->job);
+
+    printf("Enter the age: ");
+    scanf("%d", &(list->age));
+
+    printf("\n");
+
+    list++;
+  }
+  list = t;
+
+  while (id != -1) {
+
+    printf("Enter the ID to be searched (-1 to exit) :");
+    scanf("%d", &id);
+    printf("\n");
+
+    if(id == -1)
+      continue;
+
+    i = 0;
+    while(i < n && list->id != id){
+      list++;
+      i++;
+    }
+
+    if(i < n) {
+      printf("ID: %d\n", list->id);
+      printf("Name: %s\n", list->name);
+      printf("Designation: %s\n", list->job);
+      printf("Age: %d\n", list->age);
+    } else {
+      printf("Wrong ID\n");
+    }
+  }
+
+  free(t);
+
+  //getch();
+  return 0;
+}
+
+
+Output:
+Enter the number of employees :2
+
+Enter the name: Alex
+Enter the ID: 23
+Enter the designation: Tech
+Enter the age: 19
+
+Enter the name: Akshay
+Enter the ID: 24
+Enter the designation: Tech
+Enter the age: 19
+
+Enter the ID to be searched (-1 to exit) :23
+
+ID: 23
+Name: Alex
+Designation: Tech
+Age: 19
+Enter the ID to be searched (-1 to exit) :-1
+
+
+//////////////////////////////////////////
+
+// Program to accept the marklist of a student using structure array
+
+#include <stdio.h>
+//#include <conio.h>
+
+struct mlist {
+  char name[20];
+  int rollno;
+  float m1, m2, m3;
+  float total;
+  float avg;
+} entry[10];
+
+
+int main(void) {
+  //clrscr();
+
+  int num, i, sno;
+  printf("Enter the number of students: ");
+  scanf("%d", &num);
+
+  for(i = 0;i < num;i++) {
+    printf("Enter the name :");
+    scanf("%s", entry[i].name);
+
+    printf("Enter the roll no. :");
+    scanf("%d", &(entry[i].rollno));
+
+    printf("Enter the marks of the students :");
+    scanf("%f%f%f", &(entry[i].m1), &(entry[i].m2), &(entry[i].m3));
+
+    entry[i].total = entry[i].m1 + entry[i].m2 + entry[i].m3;
+    entry[i].avg = entry[i].total / 3.0;
+  }
+
+  printf("Enter the roll no. to be searched :");
+  scanf("%d", &sno);
+
+  for(i = 0;i < num && entry[i].rollno != sno;i++);
+
+  if(num != i) {
+    printf("\n\nName: %s\nRoll No.: %d\nMark 1: %f\nMark 2: %f\nMark 3: %f\nTotal: %f\nAverage: %f\n", entry[i].name, entry[i].rollno, entry[i].m1, entry[i].m2, entry[i].m3, entry[i].total, entry[i].avg);
+  } else {
+    printf("The roll number doesn\'t exist.");
+  }
+
+  //getch();
+  return 0;
+}
+
+
+Output:
+Enter the number of students: 3
+Enter the name :Akshay
+Enter the roll no. :6
+Enter the marks of the students : 70 75 80
+Enter the name :Aleena
+Enter the roll no. :7
+Enter the marks of the students :75 80 70
+Enter the name :Alex
+Enter the roll no. :8
+Enter the marks of the students :80 75 70
+Enter the roll no. to be searched :8
+
+
+Name: Alex
+Roll No.: 8
+Mark 1: 80.000000
+Mark 2: 75.000000
+Mark 3: 70.000000
+Total: 225.000000
+Average: 75.000000
+
+
+////////////////////////////////////////////////////////////////
+
+
+// Programto copy two files
+
+#include <stdio.h>
+//#include <conio.h>
+
+
+int main(void) {
+  FILE *in, *out;
+  char name[25];
+
+  //clrscr();
+
+  printf("Enter the input file name: ");
+  scanf("%s", name);
+
+  in = fopen(name, "rt");
+  if(in == NULL) {
+    printf("Failed to open the input file.");
+    //getch();
+    return 1;
+  }
+
+  printf("Enter the output file name: ");
+  scanf("%s", name);
+
+  out = fopen(name, "wt");
+  if(out == NULL) {
+    printf("Failed to open the output file.");
+    //getch();
+    return 1;
+  }
+
+  while(!feof(in)) {
+    fputc(fgetc(in), out);
+  }
+
+  fclose(in);
+  fclose(out);
+
+  printf("File copied.\n");
+
+  //getch();
+  return 0;
+}
+
+Output:
+
+Enter the input file name: Test.txt
+Enter the output file name: CopyOfTest.txt
+File copied.
+
+
+//////////////////////////////////////////////////////////////////
+
+// Program to count vowels in a file
+
+#include <stdio.h>
+//#include <conio.h>
+
+
+int main(void) {
+  FILE *in;
+  char name[25];
+  int v = 0;
+  char c;
+
+  //clrscr();
+
+  printf("Enter the input file name: ");
+  scanf("%s", name);
+
+  in = fopen(name, "rt");
+  if(in == NULL) {
+    printf("Failed to open the input file.");
+    //getch();
+    return 1;
+  }
+
+  while(!feof(in)){
+    c = (char)fgetc(in);
+
+    switch (c) {
+      case 'a':
+      case 'A':
+
+      case 'e':
+      case 'E':
+
+      case 'i':
+      case 'I':
+
+      case 'o':
+      case 'O':
+
+      case 'u':
+      case 'U':
+        v++;
+    }
+  }
+
+  printf("The number of vowels was: %d\n", v);
+  //getch();
+
+  fclose(in);
+
+  return 0;
+}
+
+
+Output:
+Enter the input file name: consolidated.txt
+The number of vowels was: 956
+
+
+//////////////////////////////////////////////////////////////////////////////////
